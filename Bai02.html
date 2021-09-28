@@ -76,7 +76,7 @@
             for (let j = 0; j < arr.length; j++) {
             var test = true;    
                 for (let t = 2; t <= Math.sqrt(arr[j]); t++) {
-                    if (arr[j] % t == 0) {
+                    if (arr[j] % t == 0 || arr[j] !=1) {
                         test = false;
                     }
                 }
