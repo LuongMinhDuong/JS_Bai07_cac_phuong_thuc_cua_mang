@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 02</title>
+</head>
+<body>
+    <script>
+        //Khai báo mảng
+        var arr = new Array();
+        var test = 1;
+        var j = 0;
+        while (test == 1) {
+            arr[j] = parseFloat(prompt("Nhập vào số thứ " +(j+1)+ " của mảng: "));
+            test = prompt("Nhập 1 để tiếp tục, nhập một số bất kỳ để dừng");
+            j++;
+        }
+
+        //In mảng
+        document.write("Mảng vừa nhập bao gồm các phần tử:");
+        document.write(arr.join() + "<br>");
+
+        //Có bao nhiêu số chăn, lẻ
+        function demChanLe() {
+            var demChan = 0;
+            var demLe = 0;
+            for (let i = 0; i < arr.length; i++) {
+               if (arr[i] % 2 == 0) {
+                   demChan++;
+               }else{
+                   demLe++;
+               }
+            }
+            document.write("Số số chẵn là: ", demChan);
+            document.write("<br>");
+            document.write("Số số lẻ là: ", demLe);
+        }
+        demChanLe();
+
+        //Tìm xem số nào xuất hiện nhiều nhất trong mảng, xuất hiện bao nhiêu lần
+        function timSo() {
+           var value = 1;
+           var dem = 1;
+           arr.sort();
+           var kq = arr[0];
+           for (let j = 0; j < arr.length-1; j++) {
+               if (arr[j] == arr[j+1]) {
+                   dem++;
+               }else {
+                   if (dem > value) {
+                        value = dem;
+                        kq = arr[j];
+                   }
+                   dem = 1;
+               }
+               if (j == arr.length - 2) {
+                    if (dem > value) {
+                        value = dem;
+                        kq = arr[j];
+                    }
+               }
+           }
+           if (value == 1 && arr.length > 1 && arr[0] == arr[1]) {
+               value = arr.length;
+           }
+           document.write("<br>Số xuất hiện nhiêu nhất là: " +kq+ ", xuất hiện "+value+" lần");
+           document.write("<br>");
+        }
+        timSo();        
+        //Tìm xem mảng có bao nhiêu số nguyên tố
+        function soNguyenTo() {
+            var value = 0;
+            var test = true;
+            for (let j = 0; j < arr.length; j++) {
+                for (let t = 2; t <= Math.sqrt(arr[j]); t++) {
+                    if (arr[j] % t == 0) {
+                        test = false;
+                    }
+                }
+                if (test == true || arr[j] == 2) {
+                    value++;
+                }
+            }
+            document.write("Số lượng số nguyên tố trong mảng là: ", value);
+        }
+        soNguyenTo();
+    </script>
+</body>
+</html>
